@@ -1,6 +1,43 @@
-# Welcome to your Expo app 👋
+# Expo Speech Bug on web 
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+On Expo 51 which uses Expo Speech version 12.0.1, when running a simple speak on web:
+
+```
+   import * as Speech from "expo-speech";
+
+   //...//
+
+   const thingToSay = "1";
+   Speech.speak(thingToSay);
+```
+
+Getting this error:
+
+```
+entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:114830 Uncaught TypeError: _ExponentSpeech.default.listenerCount is not a function
+    at setSpeakingListener (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:114830:51)
+    at _registerListenersIfNeeded (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:114715:5)
+    at Object.speak (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:114778:5)
+    at speak (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:114636:14)
+    at onClick (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:52793:15)
+    at HTMLUnknownElement.callCallback (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:14462:20)
+    at Object.invokeGuardedCallbackDev (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:14506:22)
+    at invokeGuardedCallback (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:14563:37)
+    at invokeGuardedCallbackAndCatchFirstError (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:14577:31)
+    at executeDispatch (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:18720:9)
+    at processDispatchQueueItemsInOrder (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:18746:13)
+    at processDispatchQueue (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:18757:11)
+    at dispatchEventsForPlugins (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:18766:9)
+    at entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:18926:18
+    at batchedUpdates$1 (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:33315:18)
+    at batchedUpdates (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:14310:18)
+    at dispatchEventForPluginEventSystem (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:18925:9)
+    at dispatchEventWithEnableCapturePhaseSelectiveHydrationWithoutDiscreteEventReplay (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:16432:11)
+    at dispatchEvent (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:16426:11)
+    at dispatchDiscreteEvent (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:16403:11)
+```
+
+Reproduce:
 
 ## Get started
 
@@ -16,35 +53,4 @@ This is an [Expo](https://expo.dev) project created with [`create-expo-app`](htt
     npx expo start
    ```
 
-In the output, you'll find options to open the app in a
-
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
-
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
-
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
-```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/learn): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+Open on web. I was testing with Chrome.
