@@ -1,6 +1,6 @@
 # Expo Speech Bug on web 
 
-On Expo 51 which uses Expo Speech version 12.0.1, when running a simple speak on web:
+Get a Speech.speak() error in Expo 51 when running a simple speak on web:
 
 ```
    import * as Speech from "expo-speech";
@@ -11,7 +11,9 @@ On Expo 51 which uses Expo Speech version 12.0.1, when running a simple speak on
    Speech.speak(thingToSay);
 ```
 
-Getting this error:
+This error is present in `expo-speech@12.0.1`, but not in `expo-speech@11.7.0`
+
+The error:
 
 ```
 entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:114830 Uncaught TypeError: _ExponentSpeech.default.listenerCount is not a function
@@ -37,9 +39,7 @@ entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&
     at dispatchDiscreteEvent (entry.bundle?platform=web&dev=true&hot=false&lazy=true&transform.routerRoot=app&resolver.environment=client&transform.environment=client:16403:11)
 ```
 
-Reproduce:
-
-## Get started
+## Reproduce
 
 1. Install dependencies
 
@@ -53,3 +53,5 @@ Reproduce:
     npx expo start
    ```
 3. Open on web, tap button to play sound.
+
+## Note
