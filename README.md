@@ -1,6 +1,6 @@
 # Expo Speech Bug on web 
 
-Get a Speech.speak() error in Expo 51 when running a simple speak on web:
+Get a Speech.speak() error in Expo 51 when running a simple speak on Web (Chrome Version 124.0.6367.119 (Official Build) (arm64)):
 
 ```
    import * as Speech from "expo-speech";
