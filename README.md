@@ -52,5 +52,4 @@ Reproduce:
    ```bash
     npx expo start
    ```
-
-Open on web. I was testing with Chrome.
+3. Open on web, tap button to play sound.
