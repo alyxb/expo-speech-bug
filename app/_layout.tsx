@@ -23,8 +23,15 @@ export default function RootLayout() {
   });
 
   const speak = () => {
-    const thingToSay = "1";
-    Speech.speak(thingToSay);
+    const thingToSay = "This is a test of the onDone event.";
+
+    const options = {
+      onDone: () => {
+        console.log("End of speech");
+      },
+    };
+
+    Speech.speak(thingToSay, options);
   };
 
   useEffect(() => {
